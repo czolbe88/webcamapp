@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {WebcamModule} from 'ngx-webcam';
 
 import { AppComponent } from './app.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -11,18 +12,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    WebcamModule
+    WebcamModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
-
-  takePhoto(){
-
-
-  }
 }
 
 

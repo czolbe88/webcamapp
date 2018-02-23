@@ -6,8 +6,7 @@ app.set('port', process.env.PORT || 8888);
 var fs = require ('fs');
 var S3FS = require('s3fs');
 var s3fsImpl = new S3FS('enrichment-photo-bucket',{
-  accessKeyId: 'AKIAJUVTJ4HZV5JLD5JQ',
-  secretAccessKey: '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'
+
 } );
 
 
@@ -15,21 +14,25 @@ var s3fsImpl = new S3FS('enrichment-photo-bucket',{
 //     multipartyMiddleware = multiparty();
 
 
-function WriteFile() {
+
+
+
+// registering the Member CRUD API library created
+
+// route.get('/test', WriteFile );
+route.post('/test', function (req, resp) {
   {
-    s3fsImpl.writeFile('message.txt', 'Hello Node').then(function () {
+    console.log("received request");
+
+    var file = req.files.file;
+    console.log(file);
+    s3fsImpl.writeFile(file, 'MY SELFIE').then(function () {
       console.log('It\'s saved!');
     }, function (reason) {
       throw reason;
     });
   }
-}
-
-
-// registering the Member CRUD API library created
-
-route.get('/test', WriteFile );
-route.post('/test', WriteFile );
+} );
 
 // telling express to use routing
 app.use ("/", route);

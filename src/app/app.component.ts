@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import {Subject} from "rxjs/Subject";
 import {WebcamImage} from "ngx-webcam";
 import {Observable} from "rxjs/Observable";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +17,8 @@ export class AppComponent {
 
 
 
+
+
   // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
 
@@ -29,28 +30,38 @@ export class AppComponent {
   }
 
   public handleImage(webcamImage: WebcamImage): void {
-    console.info("received webcam image", webcamImage);
-
+    console.log("received webcam image", webcamImage);
     this.webcamImage = webcamImage;
+    var image2 = webcamImage.imageAsBase64;
+    var image = JSON.stringify(webcamImage.imageAsBase64);
 
-    let data = {
-      title: "xxxx",
-      photo: this.webcamImage
-    }
 
-    // var headers = new HttpHeaders();
-    // headers.append('Content-Type', 'application/form-data');
-    this.httpClient.post("http://localhost:8888/test", data )
+
+    //
+    // let formData:FormData = new FormData();
+    // formData.append('uploadFile', image);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded; charset=utf-8'
+      })
+    };
+
+
+
+    // var params = {
+    //
+    //   data: this.webcamImage
+    // }
+
+    this.httpClient.post("http://localhost:8888/test", image2, httpOptions ).subscribe();
 
   }
+
 
   public get triggerObservable(): Observable<void> {
     return this.trigger.asObservable();
   }
-
-
-
-
 
 
 

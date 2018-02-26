@@ -137,7 +137,7 @@ route.get('/GetAllFiles', function (req, res) {
 
   setTimeout(function () {
     res.send(fileArray)
-  }, 5000);
+  }, 10000);
 
   // function sendToClient(){res.send(fileArray);
   //  console.log("callback is called")}

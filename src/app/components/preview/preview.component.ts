@@ -31,7 +31,8 @@ export class PreviewComponent {
   public handleImage(webcamImage: WebcamImage): void {
     console.log("received webcam image", webcamImage);
     this.webcamImage = webcamImage;
-    var image = webcamImage.imageAsBase64;
+    var image = webcamImage.imageAsDataUrl;
+
 
 
     //
@@ -40,12 +41,13 @@ export class PreviewComponent {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+
       })
     };
 
 
-    this.httpClient.post("http://localhost:8888/upload", image, httpOptions).subscribe();
+    this.httpClient.post("http://localhost:8888/upload", btoa(image), httpOptions).subscribe();
 
   }
 

@@ -35,7 +35,8 @@ export class RetrieveImagesService{
 
             var wbci : WebcamImage = new WebcamImage(imgKey[0],'image/jpeg');
             // console.log("wbci.imageasbase64", wbci.imageAsBase64);
-            var dataUrl = "data:image/jpeg;base64," + wbci.imageAsBase64;
+            // var dataUrl = "data:image/jpeg;base64," + atob(wbci.imageAsBase64);
+            var dataUrl =  atob(wbci.imageAsBase64);
 
             console.log("dataurl: ", dataUrl);
             this.galleryImages.push(dataUrl);

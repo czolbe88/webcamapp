@@ -22,7 +22,7 @@ export class GalleryComponent implements OnInit {
   galleryImages = this.retrieveImageService.galleryImages;
 
   photoURL(url: string) {
-    return this.DomSanitizationService.bypassSecurityTrustUrl(url);
+    return this.DomSanitizationService.bypassSecurityTrustUrl(this.galleryImages[0]);
   }
 
 

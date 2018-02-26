@@ -26,8 +26,8 @@ app.set('port', process.env.PORT || 8888);
 var fs = require('fs');
 var S3FS = require('s3fs');
 var s3fsImpl = new S3FS('enrichment-photo-bucket', {
-  accessKeyId: 'AKIAJUVTJ4HZV5JLD5JQ',
-  secretAccessKey: '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'
+  accessKeyId: '',
+  secretAccessKey: ''
 });
 
 
@@ -121,6 +121,8 @@ route.get('/GetAllFiles', function (req, res) {
       console.log(fileArray);
 
       console.log("call1");
+
+      return fileArray;
 
 
       // Files contains a list of all of the files similar to [`fs.readdir(path, callback)`](http://nodejs.org/api/fs.html#fs_fs_readdir_path_callback) but with recursive contents

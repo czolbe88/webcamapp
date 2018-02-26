@@ -1,12 +1,18 @@
-<div>
+<div class="image-gallery" style="max-width: 400px">
   <ul>
     <li *ngFor="let image of galleryImages" >
 
       <p>image:   {{image}}</p>
 
-      <p>index of array     {{galleryImages[image]}}</p>
+      <!--<img [src]="photoURL()" />-->
 
-      <img [src]="photoURL()" />
+      <img src="{{image}}" />
+
+      <img src="{{image}}" />
+
+      <img src="{{image}}" />
+
+      <img src="{{image}}" />
 
     </li>
 
@@ -16,3 +22,26 @@
 
 
 </div>
+
+
+<!--<div class="image-gallery" style="max-width: 400px">-->
+  <!--<img src="fixtures/1-small.jpg" data-full-src="fixtures/1-large.jpg">-->
+  <!--&lt;!&ndash;-->
+    <!--data-full-src is optional-->
+  <!--&ndash;&gt;-->
+  <!--<img src="fixtures/2-small.jpg">-->
+  <!--&lt;!&ndash;-->
+    <!--may specify pre-computed dimensions-->
+    <!--via data-dimensions="width,height"-->
+  <!--&ndash;&gt;-->
+  <!--<img src="fixtures/3-small.jpg" data-dimensions="400,100" data-full-src="fixtures/3-large.jpg">-->
+<!--</div>-->
+
+<script type="text/javascript">
+  var gallery = ImageGallery('.image-gallery', {
+    use: [
+      ImageGallery.LazyLoading,
+      ImageGallery.Responsive
+    ]
+  });
+</script>

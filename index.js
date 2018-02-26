@@ -26,8 +26,8 @@ app.set('port', process.env.PORT || 8888);
 var fs = require('fs');
 var S3FS = require('s3fs');
 var s3fsImpl = new S3FS('enrichment-photo-bucket', {
-  accessKeyId: '',
-  secretAccessKey: ''
+  accessKeyId: 'KEY IN API HERE<<<<<<<<<<<<<<<<<<<<<<<<',
+  secretAccessKey: 'KEY IN SECRET ACCESS KEY<<<<<<<<<<<<<<<<<'
 });
 
 
@@ -38,9 +38,14 @@ route.post('/upload', function (req, res) {
   {
     res.header('Access-Control-Allow-Origin', '*');
     console.log("received request", req.body);
+    var d = new Date();
+
+    var filename = d.getDate().toString() + d.getMonth().toString() + d.getFullYear().toString() + d.getHours().toString() + d.getMinutes().toString() + d.getSeconds().toString();
+
+    console.log(filename);
 
 
-    s3fsImpl.writeFile('filename', JSON.stringify(req.body)).then(function () {
+    s3fsImpl.writeFile(filename, JSON.stringify(req.body)).then(function () {
       console.log('It\'s saved!');
     }, function (error) {
       console.log(error);

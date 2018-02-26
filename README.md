@@ -3,7 +3,6 @@ Nodejs Enrichment Project by SA45 Team 3
 Chen Yutao
 Chow Chun Yuan, Alex
 Hnin Phyu
-Htoo Ei Khaing
 Lee Wei Han
 Paing Su San
 Ranjana Rajakumar
